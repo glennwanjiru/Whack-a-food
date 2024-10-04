@@ -18,7 +18,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        
+        restartButton.gameObject.SetActive(false);
 
 
     }
@@ -39,6 +39,19 @@ public class GameManager : MonoBehaviour
         scoreText.text = "Score : " + score;
 
     }
+
+    public void GameOver()
+    {
+        gameOverText.gameObject.SetActive(true);
+        restartButton.gameObject.SetActive(true);
+        isGameActive = false;
+
+    }
+
+    public void RestartGame()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+    }
     public void StartGame()
     {
         isGameActive = true;
@@ -46,17 +59,6 @@ public class GameManager : MonoBehaviour
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
 
-    }
-    public void GameOver()
-    {
-        gameOverText.gameObject.SetActive(true);
-        restartButton.gameObject.SetActive(true);
-
-    }
-
-    public void RestartGame()
-    {
-        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 
 
