@@ -18,9 +18,7 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        isGameActive = true;
-        StartCoroutine(SpawnTarget());
-        UpdateScore(0);
+        
 
 
     }
@@ -39,6 +37,14 @@ public class GameManager : MonoBehaviour
     {
         score += scoreToAdd;
         scoreText.text = "Score : " + score;
+
+    }
+    public void StartGame()
+    {
+        isGameActive = true;
+        score = 0;
+        StartCoroutine(SpawnTarget());
+        UpdateScore(0);
 
     }
     public void GameOver()
