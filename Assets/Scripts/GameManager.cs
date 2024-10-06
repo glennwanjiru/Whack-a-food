@@ -10,17 +10,17 @@ public class GameManager : MonoBehaviour
     public List<GameObject> targets;
     public TextMeshProUGUI scoreText;
     public TextMeshProUGUI gameOverText;
-    public bool isGameActive;
-    public UnityEngine.UI.Button restartButton;
+    public Button restartButton;
+    public Button[] difficultyButtons; // Array to store difficulty buttons
 
     private int score;
     private float spawnRate = 1.0f;
+    public bool isGameActive;
 
     void Start()
     {
         restartButton.gameObject.SetActive(false);
-
-
+        gameOverText.gameObject.SetActive(false);
     }
 
     IEnumerator SpawnTarget()
@@ -28,16 +28,19 @@ public class GameManager : MonoBehaviour
         while (isGameActive)
         {
             yield return new WaitForSeconds(spawnRate);
-            int index = Random.Range(0, targets.Count);
-            Instantiate(targets[index]);
-            
+            if (targets.Count > 0)
+            {
+                int index = Random.Range(0, targets.Count);
+                Instantiate(targets[index]);
+                Debug.Log("Spawned: " + targets[index].name); // Debug to check if targets are spawning
+            }
         }
     }
+
     public void UpdateScore(int scoreToAdd)
     {
         score += scoreToAdd;
         scoreText.text = "Score : " + score;
-
     }
 
     public void GameOver()
@@ -45,29 +48,36 @@ public class GameManager : MonoBehaviour
         gameOverText.gameObject.SetActive(true);
         restartButton.gameObject.SetActive(true);
         isGameActive = false;
-
+        // Show difficulty buttons
+        foreach (Button button in difficultyButtons)
+        {
+            button.gameObject.SetActive(true);
+        }
     }
 
     public void RestartGame()
     {
         SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
-    public void StartGame()
+
+    public void StartGame(int difficulty)
     {
         isGameActive = true;
         score = 0;
+        spawnRate /= difficulty;
         StartCoroutine(SpawnTarget());
         UpdateScore(0);
 
-    }
+        // Hide difficulty buttons when the game starts
+        foreach (Button button in difficultyButtons)
+        {
+            button.gameObject.SetActive(false);
+        }
 
+        // Hide game over and restart UI
+        gameOverText.gameObject.SetActive(false);
+        restartButton.gameObject.SetActive(false);
 
-
-
-
-    // Update is called once per frame
-    void Update()
-    {
-        
+        Debug.Log("Game Started");
     }
 }

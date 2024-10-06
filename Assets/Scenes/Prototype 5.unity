@@ -446,7 +446,6 @@ RectTransform:
   m_Children:
   - {fileID: 158217810}
   - {fileID: 1085056431}
-  - {fileID: 419488417}
   - {fileID: 1708404116}
   - {fileID: 1547897041}
   - {fileID: 730649763}
@@ -470,7 +469,7 @@ GameObject:
   - component: {fileID: 419488419}
   - component: {fileID: 419488418}
   m_Layer: 5
-  m_Name: Game Over (1)
+  m_Name: Title
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -483,16 +482,16 @@ RectTransform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 419488416}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 179073389}
+  m_Father: {fileID: 1547897041}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: -0.0000047684, y: 94.727}
+  m_AnchoredPosition: {x: 169.99998, y: 102.55048}
   m_SizeDelta: {x: 549.6211, y: 65.6469}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &419488418
@@ -753,8 +752,12 @@ MonoBehaviour:
   - {fileID: 6648432661707598509, guid: fe5bcec3548f40f47b703a02461de4e6, type: 3}
   scoreText: {fileID: 158217811}
   gameOverText: {fileID: 1085056432}
-  isGameActive: 0
   restartButton: {fileID: 1708404117}
+  difficultyButtons:
+  - {fileID: 1547897042}
+  - {fileID: 730649764}
+  - {fileID: 1482299955}
+  isGameActive: 0
 --- !u!4 &554643811
 Transform:
   m_ObjectHideFlags: 0
@@ -988,9 +991,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 554643810}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 730649767}
+        m_TargetAssemblyTypeName: Difficulty, Assembly-CSharp
+        m_MethodName: SetDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1050,6 +1053,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a44978d6d101c44c8ecff6a0834f541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 2
 --- !u!1 &847601671
 GameObject:
   m_ObjectHideFlags: 0
@@ -1687,9 +1691,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 554643810}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 1482299958}
+        m_TargetAssemblyTypeName: Difficulty, Assembly-CSharp
+        m_MethodName: SetDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1749,6 +1753,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a44978d6d101c44c8ecff6a0834f541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 3
 --- !u!1 &1547897040
 GameObject:
   m_ObjectHideFlags: 0
@@ -1782,6 +1787,7 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 579972940}
+  - {fileID: 419488417}
   m_Father: {fileID: 179073389}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
@@ -1833,9 +1839,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 554643810}
-        m_TargetAssemblyTypeName: GameManager, Assembly-CSharp
-        m_MethodName: RestartGame
+      - m_Target: {fileID: 1547897045}
+        m_TargetAssemblyTypeName: Difficulty, Assembly-CSharp
+        m_MethodName: SetDifficulty
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1895,6 +1901,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3a44978d6d101c44c8ecff6a0834f541, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  difficulty: 1
 --- !u!1 &1553669258
 GameObject:
   m_ObjectHideFlags: 0

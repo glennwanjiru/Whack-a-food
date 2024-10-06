@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
-    public int pointValue=10;
+    public int pointValue = 10;
     public ParticleSystem explosion;
 
     private Rigidbody targetRb;
@@ -39,7 +39,6 @@ public class Target : MonoBehaviour
         return new Vector3(Random.Range(-xRange, xRange), ySpawnPos);
     }
 
-
     private void OnMouseDown()
     {
         if (gameManager.isGameActive)
@@ -49,21 +48,16 @@ public class Target : MonoBehaviour
             Instantiate(explosion, transform.position, explosion.transform.rotation);
         }
     }
+
     private void OnTriggerEnter(Collider other)
     {
         if (gameManager.isGameActive)
         {
             Destroy(gameObject);
-            if (!gameObject.CompareTag("Bad")) // For good targets only, trigger GameOver
+            if (!gameObject.CompareTag("Bad"))
             {
                 gameManager.GameOver();
             }
         }
-    }
-
-
-    void Update()
-    {
-        
     }
 }

@@ -5,25 +5,20 @@ using UnityEngine.UI;
 
 public class Difficulty : MonoBehaviour
 {
-
+    public int difficulty;
     private Button button;
     private GameManager gameManager;
+
     void Start()
     {
         button = GetComponent<Button>();
         button.onClick.AddListener(SetDifficulty);
-        gameManager=GameObject.Find("Game Manager").GetComponent<GameManager>();
-
+        gameManager = GameObject.Find("Game Manager").GetComponent<GameManager>();
     }
-    void SetDifficulty()
+
+    public void SetDifficulty()
     {
         Debug.Log(gameObject.name + " was clicked");
-        gameManager.StartGame();
-
-    }
-
-    void Update()
-    {
-        
+        gameManager.StartGame(difficulty);
     }
 }
